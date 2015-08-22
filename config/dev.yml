@@ -1,0 +1,8 @@
+debug: true
+db.options:
+  driver: pdo_mysql
+  dbname: pony_express
+  host: localhost
+  user: pony_express
+  password: pony_express_password
+  charset: utf8
