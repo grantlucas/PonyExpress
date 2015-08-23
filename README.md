@@ -1,7 +1,7 @@
 # Pony Express
 Data courier server for interactive installations.
 
-[![Build Status](https://travis-ci.org/grantlucas/PonyExpress.svg)](https://travis-ci.org/grantlucas/PonyExpress)
+[![Build Status](https://travis-ci.org/grantlucas/PonyExpress.svg?branch=master)](https://travis-ci.org/grantlucas/PonyExpress)
 
 ## Installation
 
