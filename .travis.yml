@@ -11,7 +11,7 @@ cache:
   directories:
     - vendor
 
-before_script:
+install:
   - composer install --optimize-autoloader --prefer-dist --no-interaction
 
 env:
