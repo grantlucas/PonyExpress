@@ -1,12 +1,13 @@
 {
-    "name": "grantlucas/PonyExpress",
+    "name": "grantlucas/pont-express",
     "description": "Data courier server for interactive installations.",
     "require": {
         "silex/silex": "~1.3",
         "doctrine/dbal": "~2.5",
         "igorw/config-service-provider": "~1.2",
         "symfony/yaml": "~2.7",
-        "symfony/console": "~2.7"
+        "symfony/console": "~2.7",
+        "dflydev/doctrine-orm-service-provider": "~1.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.8",
@@ -19,5 +20,10 @@
             "name": "Grant Lucas",
             "email": "contact@grantlucas.com"
         }
-    ]
+    ],
+    "autoload": {
+      "psr-4": {
+        "PonyExpress\\": "src/"
+      }
+    }
 }

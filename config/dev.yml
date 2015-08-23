@@ -1,4 +1,5 @@
 debug: true
+
 db.options:
   driver: pdo_mysql
   dbname: pony_express
@@ -6,3 +7,10 @@ db.options:
   user: pony_express
   password: pony_express_password
   charset: utf8
+
+orm.em.options:
+  mappings:
+    -
+      type: annotation
+      namespace: PonyExpress
+      path: 'src/Entities'

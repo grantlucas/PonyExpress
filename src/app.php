@@ -9,17 +9,14 @@ $app = new Silex\Application();
 //FIXME: Default to dev for now
 $env = getenv('APP_ENV') ?: 'dev';
 
-
 // Register Doctrine DBAL
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 
-//TODO: Set up Doctrine ORM
-// https://github.com/dflydev/dflydev-doctrine-orm-service-provider <-- this is probably the one to use as it leverages the Silex Doctrine service provider
-// https://github.com/palmasev/DoctrineORMServiceProvider
+// Register Doctrine ORM
+$app->register(new Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider());
 
 // Load Configurations
 $app->register(new Igorw\Silex\ConfigServiceProvider(__DIR__."/../config/$env.yml"));
-
 
 //TODO: Middleware (http://silex.sensiolabs.org/doc/middlewares.html) to ensure all requests are properly signed
 
