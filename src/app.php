@@ -26,7 +26,8 @@ $app->register(new Igorw\Silex\ConfigServiceProvider(__DIR__."/../config/$env.ym
 $app->post('/message', function(Request $request) use ($app) {
   $message = $request->get('message');
 
-  //TODO: Store the message and return the representation
+  //TODO: Store the message
+  //TODO: Return a representation (http://fractal.thephpleague.com) Try fractal to abstract the output from the data storage
   //TODO: Validate that a message was provided and throw 400 if not. Add to test case
 
   // Build data to return
