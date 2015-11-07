@@ -28,18 +28,13 @@ $app->register(new \Igorw\Silex\ConfigServiceProvider(__DIR__."/../config/$env.y
 
 // POST to create a new message
 $app->post('/message', function(Request $request) use ($app) {
-  $message = $request->get('message');
 
-  //TODO: DONT NEED DOCTRINE YET, JUST build, deal with, and return the message object. Don't care about storing and "Doctrine" yet
+  //TODO: Put Doctrine storage on message for persisting to database
 
-  //TODO: Create a message entity that's not necessarily Doctrine, do the ORM stuff after
-  //TODO: return the message object
-  //TODO: Put Doctrine storage on it
-  //TODO: Message should have an ID after construction, don't use auto-increment ID. Use UUID isntead. Ben ramsey's lib. 128bit integer
-
-  //TODO: Store the message
-  //TODO: Validate that a message was provided and throw 400 if not. Add to test case
-
+  // Validate that a message was provided
+  if (empty($request->get('message'))) {
+    $app->abort(400, "Message parameter is required and cannot be empty.");
+  }
 
   // Create the message object
   $message = new Entity\Message($request->get('message'));
@@ -47,7 +42,7 @@ $app->post('/message', function(Request $request) use ($app) {
   // Build data to return
   $data = array(
     'message' => $app->escape($message->getData()),
-    'id' => 1,
+    'id' => $message->getId(),
   );
 
   // Return JSON with 201 Created HTTP status

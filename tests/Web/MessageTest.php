@@ -8,6 +8,15 @@ use Silex\WebTestCase;
  */
 class MessageTest extends WebTestCase
 {
+  private $client;
+
+  public function setUp()
+  {
+    parent::setUp();
+
+    $this->client = $this->createClient();
+  }
+
   public function createApplication()
   {
     $app = require __DIR__ . '/../../src/app.php';
@@ -22,15 +31,14 @@ class MessageTest extends WebTestCase
    */
   public function testMessageCreation()
   {
-    $client = $this->createClient();
-    $crawler = $client->request('POST', '/message', array(
+    $crawler = $this->client->request('POST', '/message', array(
       'message' => 'This is the test message.',
-      ));
+    ));
 
-    $this->assertEquals(201, $client->getResponse()->getStatusCode());
+    $this->assertEquals(201, $this->client->getResponse()->getStatusCode());
 
     // Get the resulting JSON
-    $json = json_decode($client->getResponse()->getContent());
+    $json = json_decode($this->client->getResponse()->getContent());
 
     // Validate the returned JSON
     $this->assertEquals('This is the test message.', $json->message);
