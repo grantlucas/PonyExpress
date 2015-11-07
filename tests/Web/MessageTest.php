@@ -1,5 +1,5 @@
 <?php
-namespace PonyExpress\Tests;
+namespace PonyExpress\Tests\Web;
 
 use Silex\WebTestCase;
 
@@ -10,7 +10,7 @@ class MessageTest extends WebTestCase
 {
   public function createApplication()
   {
-    $app = require __DIR__ . '/../src/app.php';
+    $app = require __DIR__ . '/../../src/app.php';
     $app['debug'] = true;
     unset($app['exception_handler']);
 
@@ -34,6 +34,6 @@ class MessageTest extends WebTestCase
 
     // Validate the returned JSON
     $this->assertEquals('This is the test message.', $json->message);
-    $this->assertEquals(1, $json->id);
+    $this->assertObjectHasAttribute('id', $json);
   }
 }

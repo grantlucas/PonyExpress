@@ -12,5 +12,5 @@ orm.em.options:
   mappings:
     -
       type: annotation
-      namespace: PonyExpress
-      path: 'src/Entities'
+      namespace: 'PonyExpress\Entity'
+      path: 'src/Entity'
